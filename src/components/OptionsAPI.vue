@@ -7,13 +7,23 @@ export default defineComponent({
     }
   },
   computed: {
-    double() {
-      return this.count * 2
+    double: {
+      // Getter
+      get() {
+        return this.count * 2
+      },
+      // Setter
+      set(value: number) {
+        this.count = value / 2
+      }
     }
   },
   methods: {
     increase() {
       this.count++
+    },
+    assign() {
+      this.double = 8
     }
   }
 })
@@ -21,6 +31,7 @@ export default defineComponent({
 
 <template>
   <button @click="increase">Increase</button>
+  <button @click="assign">Assign</button>
   <h1>{{ count }}</h1>
   <h2>{{ double }}</h2>
 </template>
