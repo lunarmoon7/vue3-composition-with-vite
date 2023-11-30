@@ -18,6 +18,11 @@ export default defineComponent({
       }
     }
   },
+  watch: {
+    count(newVal, oldVal) {
+      console.log(`newVal: ${newVal}, oldVal: ${oldVal}`)
+    }
+  },
   methods: {
     increase() {
       this.count++

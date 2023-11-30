@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 const count = ref(0)
 
 const increase = () => {
   count.value++
 }
+
 const assign = () => {
   double.value = 8
 }
+
 const double = computed({
   // Getter
   get() {
@@ -18,6 +20,11 @@ const double = computed({
   set(value: number) {
     count.value = value / 2
   }
+})
+
+// 첫 번째 인자는 감시하려는 참조 객체
+watch(count, (newVal, oldVal) => {
+  console.log(`newVal: ${newVal}, oldVal: ${oldVal}`)
 })
 </script>
 
